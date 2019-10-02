@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Alert} from 'react-native';
+import React, { useState } from 'react';
+import { Alert } from 'react-native';
 import {
   Container,
   Title,
@@ -9,7 +9,7 @@ import {
 } from '../../components/global';
 import api from '../../services/api';
 
-export default function SignUp({navigation}) {
+export default function SignUp({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import {Alert} from 'react-native';
+import { Alert } from 'react-native';
 import {
   Container,
   Title,
@@ -11,7 +11,7 @@ import {
 
 import api from '../../services/api';
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -26,7 +26,7 @@ export default function Login({navigation}) {
         password,
       });
 
-      const {token} = response.data;
+      const { token } = response.data;
 
       api.defaults.headers.Authorization = `Bearer ${token}`;
 

@@ -1,5 +1,5 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -15,7 +15,7 @@ const AuthStack = createStackNavigator(
     defaultNavigationOptions: {
       header: null,
     },
-  },
+  }
 );
 
 const AppStack = createStackNavigator(
@@ -31,7 +31,7 @@ const AppStack = createStackNavigator(
       },
       headerTintColor: '#fff',
     },
-  },
+  }
 );
 
 const Routes = createAppContainer(
@@ -39,7 +39,7 @@ const Routes = createAppContainer(
     Loading,
     AuthStack,
     AppStack,
-  }),
+  })
 );
 
 export default Routes;

@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import {ActivityIndicator} from 'react-native';
+import { ActivityIndicator } from 'react-native';
 
-import {Container} from '../../components/global';
+import { Container } from '../../components/global';
 
-export default function Loading({navigation}) {
+export default function Loading({ navigation }) {
   useEffect(() => {
     async function checkToken() {
       const token = await AsyncStorage.getItem('token');
