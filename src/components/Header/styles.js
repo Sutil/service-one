@@ -12,6 +12,6 @@ export const Title = styled.Text`
   font-weight: bold;
   color: #fff;
   font-size: 20px;
-  flex: 1;
   text-align: center;
+  flex: 1;
 `;
