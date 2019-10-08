@@ -22,6 +22,8 @@ export const Input = styled.TextInput`
   border-radius: 12px;
   padding: 0 10px;
   font-size: 18px;
+  border: 1px;
+  border-color: #777;
 `;
 
 export const Button = styled.TouchableOpacity`

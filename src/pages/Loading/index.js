@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { ActivityIndicator } from 'react-native';
 
 import { Container } from '../../components/global';
+import api from '../../services/api';
 
 export default function Loading({ navigation }) {
   useEffect(() => {
@@ -10,6 +11,7 @@ export default function Loading({ navigation }) {
       const token = await AsyncStorage.getItem('token');
 
       if (token) {
+        api.defaults.headers.Authorization = `Bearer ${token}`;
         navigation.navigate('AppStack');
       } else {
         navigation.navigate('AuthStack');
