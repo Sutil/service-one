@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Alert } from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -19,9 +20,10 @@ import {
   JobTotal,
   JobTotalPrice,
   AddButton,
+  DeleteButton,
 } from './styles';
 
-export default function Home({ navigation }) {
+function Home({ navigation, isFocused }) {
   const [jobs, setJobs] = useState([]);
 
   function jobFormat(job) {
@@ -48,7 +50,7 @@ export default function Home({ navigation }) {
     }
 
     loadJobs();
-  }, []);
+  }, [isFocused]);
 
   const totalJobsPrice = useMemo(() => {
     return jobs.reduce((tot, job) => tot + job.price, 0);
@@ -56,15 +58,45 @@ export default function Home({ navigation }) {
 
   const totalJobs = useMemo(() => jobs.length, [jobs]);
 
+  async function handleDelete(item) {
+    try {
+      await api.delete(`jobs/${item.id}`);
+
+      setJobs(jobs.filter(job => job.id !== item.id));
+    } catch (err) {
+      Alert.alert('Erro', 'Falha ao excluir job!');
+    }
+  }
+
+  function deleteRequest(item) {
+    const btYes = {
+      text: 'Sim',
+      onPress: () => {
+        handleDelete(item);
+      },
+    };
+    const btNo = { text: 'Não' };
+
+    Alert.alert('Atenção', `Deseja excluir o job '${item.title}'?`, [
+      btNo,
+      btYes,
+    ]);
+  }
+
   function renderJob({ item }) {
     return (
-      <JobContainer>
+      <JobContainer
+        onPress={() => navigation.navigate('JobEdit', { job: item })}
+      >
         <JobTitle>{item.title}</JobTitle>
         <JobInfo>
           <JobDate>{item.formattedDate}</JobDate>
 
           <MoneyFormat moneyValue={item.price} TextRender={JobPrice} />
         </JobInfo>
+        <DeleteButton onPress={() => deleteRequest(item)}>
+          <Icon name="delete" size={35} color="#FF8B0D" />
+        </DeleteButton>
       </JobContainer>
     );
   }
@@ -93,3 +125,5 @@ Home.navigationOptions = ({ navigation }) => {
     header: <Header navigation={navigation} />,
   };
 };
+
+export default withNavigationFocus(Home);

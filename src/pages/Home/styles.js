@@ -6,7 +6,7 @@ export const Container = styled.View`
 
 export const JobList = styled.FlatList``;
 
-export const JobContainer = styled.View`
+export const JobContainer = styled.TouchableOpacity`
   padding: 20px;
   background: #9575cd;
   margin: 5px 0;
@@ -59,4 +59,10 @@ export const AddButton = styled.TouchableOpacity`
   background: #ff8b0d;
   justify-content: center;
   align-items: center;
+`;
+
+export const DeleteButton = styled.TouchableOpacity`
+  position: absolute;
+  right: 10px;
+  top: 10px;
 `;

@@ -1,13 +1,13 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
+import { createFluidNavigator } from 'react-navigation-fluid-transitions';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import JobEdit from './pages/JobEdit';
 import Loading from './pages/Loading';
 
-const AuthStack = createStackNavigator(
+const AuthStack = createFluidNavigator(
   {
     Login,
     SignUp,

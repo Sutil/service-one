@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
+import { Transition } from 'react-navigation-fluid-transitions';
 import {
   Container,
   Title,
@@ -34,9 +35,13 @@ export default function SignUp({ navigation }) {
 
   return (
     <Container>
-      <Title>Meus Serviços</Title>
+      <Transition shared="title">
+        <Title>Meus Serviços</Title>
+      </Transition>
       <Input placeholder="Nome completo" value={name} onChangeText={setName} />
-      <Input placeholder="Seu e-mail" value={email} onChangeText={setEmail} />
+      <Transition shared="email">
+        <Input placeholder="Seu e-mail" value={email} onChangeText={setEmail} />
+      </Transition>
       <Input
         placeholder="Sua senha"
         secureTextEntry

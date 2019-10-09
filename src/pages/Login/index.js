@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Alert } from 'react-native';
+import { Transition } from 'react-navigation-fluid-transitions';
 import {
   Container,
   Title,
@@ -40,14 +41,20 @@ export default function Login({ navigation }) {
 
   return (
     <Container>
-      <Title>Meus Serviços</Title>
-      <Input placeholder="Seu e-mail" value={email} onChangeText={setEmail} />
-      <Input
-        placeholder="Sua senha"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
+      <Transition shared="title">
+        <Title>Meus Serviços</Title>
+      </Transition>
+      <Transition shared="email">
+        <Input placeholder="Seu e-mail" value={email} onChangeText={setEmail} />
+      </Transition>
+      <Transition shared="pass">
+        <Input
+          placeholder="Sua senha"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+      </Transition>
       <Button onPress={handleLogin}>
         <TextButton>Entrar</TextButton>
       </Button>
