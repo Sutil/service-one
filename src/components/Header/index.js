@@ -12,11 +12,19 @@ export default function Header({ navigation }) {
     navigation.navigate('AuthStack');
   }
 
+  function navigateToFilter() {
+    navigation.navigate('Filter');
+  }
+
   return (
     <Container>
       <Title>Jobs</Title>
       <TouchableOpacity onPress={handleLogout}>
         <Icon name="logout" size={30} color="#fff" />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={navigateToFilter} style={{ marginLeft: 20 }}>
+        <Icon name="filter" size={30} color="#fff" />
       </TouchableOpacity>
     </Container>
   );

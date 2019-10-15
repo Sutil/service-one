@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import JobEdit from './pages/JobEdit';
 import Loading from './pages/Loading';
+import Filter from './pages/Filter';
 
 const AuthStack = createFluidNavigator(
   {
@@ -23,6 +24,7 @@ const AppStack = createStackNavigator(
   {
     Home,
     JobEdit,
+    Filter,
   },
   {
     headerLayoutPreset: 'center',

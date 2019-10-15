@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { Alert } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 import { format, parseISO } from 'date-fns';
@@ -25,6 +26,7 @@ import {
 
 function Home({ navigation, isFocused }) {
   const [jobs, setJobs] = useState([]);
+  const filter = useSelector(state => state.textFilter);
 
   function jobFormat(job) {
     return {
@@ -38,7 +40,8 @@ function Home({ navigation, isFocused }) {
   useEffect(() => {
     async function loadJobs() {
       try {
-        const response = await api.get('jobs');
+        const url = filter ? `jobs?title=${filter}` : 'jobs';
+        const response = await api.get(url);
 
         const jobList = response.data.map(j => jobFormat(j));
 

@@ -22,6 +22,8 @@
     "react-navigation-fluid-transitions": "^0.3.2",
     "react-navigation-stack": "^1.9.3",
     "react-number-format": "^4.3.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
     "simple-datetime-picker": "^1.0.3",
     "styled-components": "^4.4.0"
   },
